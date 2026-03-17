@@ -292,7 +292,7 @@ body::after {
   font-size: var(--type-body-lg-size);
   font-weight: var(--type-body-lg-weight);
   line-height: var(--type-body-lg-lh);
-  color: var(--color-text-dim);
+  color: #FFF600;
   max-width: 50ch;
   margin-bottom: var(--space-lg);
 }
@@ -305,7 +305,7 @@ body::after {
 .opening__concept-label {
   font-family: var(--font-heading);
   font-size: var(--type-label-size);
-  font-weight: var(--type-label-weight);
+  font-weight: 900;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-signal);

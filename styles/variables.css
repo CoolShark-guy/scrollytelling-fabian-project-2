@@ -1,0 +1,123 @@
+/* ============================================================
+   VARIABLES.CSS — LOST IN THE SCROLL
+   Design tokens: primitive → semantic
+   Dark mode default. Light mode via [data-theme="light"]
+   or prefers-color-scheme.
+   ============================================================ */
+
+:root {
+
+  /* =====================================================
+     COLLECTION 1: PRIMITIVE TOKENS
+  ===================================================== */
+
+  --color-red-500:    #ED0048;
+  --color-yellow-500: #FFF600;
+  --color-black:      #000000;
+  --color-cyan-500:   #00F0FF;
+  --color-gray-900:   #111111;
+  --color-gray-700:   #333333;
+  --color-olive-500:  #797655;
+
+  /* =====================================================
+     COLLECTION 2: SEMANTIC TOKENS — dark mode (default)
+  ===================================================== */
+
+  --color-surface:        var(--color-black);
+  --color-surface-alt:    var(--color-gray-900);
+  --color-surface-signal: var(--color-red-500);
+  --color-surface-static: var(--color-yellow-500);
+
+  --color-text:         var(--color-yellow-500);
+  --color-text-on-light:var(--color-black);
+  --color-text-dim:     var(--color-olive-500);
+
+  --color-signal: var(--color-red-500);
+  --color-glitch: var(--color-cyan-500);
+  --color-status-ok: var(--color-glitch);
+
+  --color-yellow-a08: rgba(255,246,0,0.08);
+  --color-yellow-a15: rgba(255,246,0,0.15);
+  --color-yellow-a25: rgba(255,246,0,0.25);
+  --color-red-a12:    rgba(237,0,72,0.12);
+
+  /* =====================================================
+     TYPOGRAPHY
+  ===================================================== */
+
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body:    'Rajdhani', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+
+  /* Heading XL */
+  --type-heading-xl-size:   72px;
+  --type-heading-xl-weight: 900;
+  --type-heading-xl-lh:     1.1;
+
+  /* Heading LG */
+  --type-heading-lg-size:   48px;
+  --type-heading-lg-weight: 700;
+  --type-heading-lg-lh:     1.1;
+
+  /* Heading MD */
+  --type-heading-md-size:   36px;
+  --type-heading-md-weight: 700;
+  --type-heading-md-lh:     1.1;
+
+  /* Heading SM */
+  --type-heading-sm-size:   24px;
+  --type-heading-sm-weight: 700;
+  --type-heading-sm-lh:     1.2;
+
+  /* Body LG */
+  --type-body-lg-size:   18px;
+  --type-body-lg-weight: 400;
+  --type-body-lg-lh:     1.7;
+
+  /* Body Base */
+  --type-body-base-size:   16px;
+  --type-body-base-weight: 300;
+  --type-body-base-lh:     1.7;
+
+  /* Label */
+  --type-label-size:   11px;
+  --type-label-weight: 600;
+  --type-label-lh:     1;
+
+  /* =====================================================
+     SPACING TOKENS
+  ===================================================== */
+
+  --space-xs:  8px;
+  --space-sm:  24px;
+  --space-md:  32px;
+  --space-lg:  48px;
+  --space-xl:  64px;
+  --space-2xl: 80px;
+
+}
+
+/* =====================================================
+   LIGHT MODE — explicit toggle
+===================================================== */
+[data-theme="light"] {
+  --color-surface:        var(--color-yellow-500);
+  --color-surface-alt:    #e8de00;
+  --color-text:           var(--color-black);
+  --color-text-on-light:  var(--color-black);
+  --color-text-dim:       #4a4800;
+  /* signal and glitch stay identical across modes */
+}
+
+/* =====================================================
+   LIGHT MODE — system preference (if no explicit toggle)
+===================================================== */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-surface:        var(--color-yellow-500);
+    --color-surface-alt:    #e8de00;
+    --color-text:           var(--color-black);
+    --color-text-on-light:  var(--color-black);
+    --color-text-dim:       #4a4800;
+  }
+}

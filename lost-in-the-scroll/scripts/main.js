@@ -131,7 +131,7 @@ function initSection2() {
   // DrawSVGPlugin: waveform draws on scroll
   // Ghost windows parallax at 0.2x / 0.5x depth
 
-  gsap.from('.status-window', {
+  gsap.from('.status-window-svg-wrap', {
     y: 40,
     opacity: 0,
     duration: 1,
@@ -182,7 +182,7 @@ function initSection3() {
     }
   });
 
-  gsap.from('.naming__header h2', {
+  gsap.from('.naming__heading', {
     y: 30,
     opacity: 0,
     duration: 0.8,

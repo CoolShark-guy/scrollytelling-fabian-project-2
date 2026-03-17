@@ -109,12 +109,8 @@ body {
 ===================================================== */
 
 #smooth-wrapper {
-  overflow: hidden;
-  position: fixed;
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  /* position: fixed; overflow: hidden; height: 100% — only needed when ScrollSmoother is active */
 }
 
 #smooth-content {

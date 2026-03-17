@@ -72,10 +72,10 @@ function initSection1() {
 
   const tl1 = gsap.timeline();
   tl1
-    .from('.opening__text h1',               { y: 40, opacity: 0, ease: 'power3.out', duration: 1 })
-    .from('.opening__text p',                { y: 24, opacity: 0, ease: 'power2.out', duration: 0.8 }, '-=0.4')
-    .from('.opening__concept',               { x: -20, opacity: 0, ease: 'power2.out', duration: 0.8 }, '-=0.3')
-    .from('.section--opening .section__label', { opacity: 0, duration: 0.6 }, '-=0.5');
+    .fromTo('.opening__text h1',               { y: 40, opacity: 0 }, { y: 0, opacity: 1, ease: 'power3.out', duration: 1 })
+    .fromTo('.opening__text p',                { y: 24, opacity: 0 }, { y: 0, opacity: 1, ease: 'power2.out', duration: 0.8 }, '-=0.4')
+    .fromTo('.opening__concept',               { x: -20, opacity: 0 }, { x: 0, opacity: 1, ease: 'power2.out', duration: 0.8 }, '-=0.3')
+    .fromTo('.section--opening .section__label', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.5');
 }
 
 /* =====================================================
@@ -110,10 +110,10 @@ function initSection3() {
 
   const tl2 = gsap.timeline();
   tl2
-    .from('.naming__heading',        { y: 30, opacity: 0, ease: 'power3.out', duration: 0.8 })
-    .from('.naming__divider',        { scaleX: 0, ease: 'power2.out', duration: 0.6 }, '-=0.3')
-    .from('.naming__panel--corrupt', { x: -30, opacity: 0, ease: 'back.out(1.4)', duration: 0.8 }, '-=0.2')
-    .from('.naming__panel--named',   { x: 30,  opacity: 0, ease: 'back.out(1.4)', duration: 0.8 }, '-=0.6');
+    .fromTo('.naming__heading',        { y: 30, opacity: 0 }, { y: 0, opacity: 1, ease: 'power3.out', duration: 0.8 })
+    .fromTo('.naming__divider',        { scaleX: 0 },         { scaleX: 1, ease: 'power2.out', duration: 0.6 }, '-=0.3')
+    .fromTo('.naming__panel--corrupt', { x: -30, opacity: 0 }, { x: 0, opacity: 1, ease: 'back.out(1.4)', duration: 0.8 }, '-=0.2')
+    .fromTo('.naming__panel--named',   { x: 30,  opacity: 0 }, { x: 0, opacity: 1, ease: 'back.out(1.4)', duration: 0.8 }, '-=0.6');
 }
 
 /* =====================================================
@@ -152,9 +152,9 @@ function initSection4() {
 function initSection5() {
   if (reducedMotion) return;
 
-  gsap.from('.memory__header h2', { y: 20, opacity: 0, ease: 'power2.out', duration: 0.8 });
-  gsap.from('.data-entry',        { x: -30, opacity: 0, stagger: 0.15, ease: 'power2.out', duration: 0.8 });
-  gsap.from('.memory__session',   { opacity: 0, ease: 'power2.out', duration: 0.6 });
+  gsap.fromTo('.memory__header h2', { y: 20, opacity: 0 }, { y: 0, opacity: 1, ease: 'power2.out', duration: 0.8 });
+  gsap.fromTo('.data-entry',        { x: -30, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.15, ease: 'power2.out', duration: 0.8 });
+  gsap.fromTo('.memory__session',   { opacity: 0 },         { opacity: 1, ease: 'power2.out', duration: 0.6 });
 }
 
 /* =====================================================

@@ -2,8 +2,8 @@
 
 A scrollytelling site tracing a JavaScript learning journey through the metaphor of Johnny Silverhand's consciousness stored as an engram on a Relic chip from Cyberpunk 2077.
 
-**Live site:** [your GitHub Pages URL here]
-**Repository:** [your repo URL here]
+**Live site:** https://coolshark-guy.github.io/scrollytelling-fabian-project-2/
+**Repository:** https://github.com/CoolShark-guy/scrollytelling-fabian-project-2
 
 ---
 

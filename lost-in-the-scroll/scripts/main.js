@@ -30,7 +30,7 @@ function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem(THEME_KEY, theme);
   const btn = document.querySelector('.theme-toggle');
-  if (btn) btn.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  if (btn) btn.textContent = theme === 'dark' ? 'Light' : 'Dark';
 }
 
 function initTheme() {
@@ -268,8 +268,8 @@ function initSection3() {
       trigger: namingSection,
       start: 'top 90%',
       end: 'top 10%',
-      onEnter: () => { console.log('glitch onEnter'); triggerGlitch(); },
-      onEnterBack: () => { console.log('glitch onEnterBack'); triggerGlitch(); },
+      onEnter: () => { triggerGlitch(); },
+      onEnterBack: () => { triggerGlitch(); },
     });
   }
 

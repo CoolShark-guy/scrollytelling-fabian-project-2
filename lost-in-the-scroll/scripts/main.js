@@ -7,7 +7,7 @@
    PLUGIN REGISTRATION
 ===================================================== */
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 if (window.ScrollSmoother) {
   gsap.registerPlugin(ScrollSmoother);
 }
@@ -30,7 +30,7 @@ function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem(THEME_KEY, theme);
   const btn = document.querySelector('.theme-toggle');
-  if (btn) btn.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  if (btn) btn.textContent = theme === 'dark' ? 'Dark' : 'Light';
 }
 
 function initTheme() {
@@ -218,7 +218,6 @@ function initSection2() {
     .fromTo('.status-window-svg-wrap', { y: 40, opacity: 0 }, { y: 0, opacity: 1, ease: 'power3.out', duration: 1 }, '-=0.4')
     .fromTo('.first-contact__copy', { y: 20, opacity: 0 }, { y: 0, opacity: 1, ease: 'power2.out', duration: 0.7 }, '-=0.5')
     .fromTo('.first-contact__concept', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.3')
-    .fromTo('.waveform-svg', { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.3');
 
   // Ghost window parallax — each layer moves at a different speed scrubbed to scroll
   const ghostSpeeds = [20, 35, 50, 65, 80];
@@ -458,6 +457,71 @@ function initSection4() {
 }
 
 /* =====================================================
+   TRANSITION 04 → 05
+   Section 04 pins when its bottom hits the viewport
+   bottom. Scrolling into the spacer scrubs a glitch
+   timeline: channel split widens → white flash →
+   section 04 disappears. Scrubbing back reverses it.
+===================================================== */
+
+function initTransition0405() {
+  if (reducedMotion) return;
+
+  const switchSection = document.getElementById('the-switch');
+  const flash = document.querySelector('.transition-04-05__flash');
+  const arasaka = document.getElementById('t0405-arasaka');
+  if (!switchSection || !flash) return;
+
+  gsap.set(flash, { opacity: 0 });
+  if (arasaka) gsap.set(arasaka, { opacity: 0 });
+
+  const tl = gsap.timeline({ paused: true });
+
+  tl
+    // Act 1 — channel split builds, Arasaka logo fades in
+    .to(switchSection, {
+      filter: 'drop-shadow(-18px 0 0 #ED0048) drop-shadow(18px 0 0 #00F0FF)',
+      x: -4,
+      ease: 'power1.in',
+      duration: 0.2,
+    })
+    .to(arasaka || {}, { opacity: 1, ease: 'power2.out', duration: 0.2 }, '<')
+    .to(switchSection, {
+      filter: 'drop-shadow(-45px 0 0 #ED0048) drop-shadow(45px 0 0 #00F0FF)',
+      x: 8,
+      ease: 'power1.in',
+      duration: 0.15,
+    })
+    .to(switchSection, {
+      filter: 'drop-shadow(-80px 0 0 #ED0048) drop-shadow(80px 0 0 #00F0FF)',
+      x: -10,
+      ease: 'power2.in',
+      duration: 0.1,
+    })
+    // Act 2 — flash
+    .to(flash, { opacity: 1, duration: 0.1, ease: 'none' })
+    // Act 3 — section 04 gone, logo gone, flash clears
+    .set(switchSection, { opacity: 0, filter: 'none', x: 0 })
+    .set(arasaka || {}, { opacity: 0 })
+    .to(flash, { opacity: 0, duration: 0.25, ease: 'power2.out' });
+
+  ScrollTrigger.create({
+    trigger: '#transition-04-05',
+    start: 'top bottom',      // spacer top hits viewport bottom → pin starts
+    end: 'bottom bottom',     // spacer bottom hits viewport bottom → pin ends
+    pin: '#the-switch',
+    pinSpacing: false,
+    scrub: 0.6,
+    animation: tl,
+    onLeaveBack: () => {
+      gsap.set(switchSection, { opacity: 1, filter: 'none', x: 0 });
+      gsap.set(flash, { opacity: 0 });
+      if (arasaka) gsap.set(arasaka, { opacity: 0, scale: 0.8 });
+    },
+  });
+}
+
+/* =====================================================
    SECTION 5 — THE MEMORY
 ===================================================== */
 
@@ -498,25 +562,114 @@ function initSection5() {
 
 /* =====================================================
    SECTION 6 — CLOSING
+   Sequence (all scrubbed to scroll):
+   1. Section fades in (label appears)
+   2. Eye opens — lids slide apart
+   3. Branch paths fan out from center
+   4. Headline + body + engram animate in
 ===================================================== */
 
 function initSection6() {
-  if (reducedMotion) return;
+  if (reducedMotion) {
+    // Instant reveal for reduced motion
+    gsap.set('.closing__end-label, .closing__eye, .closing__headline, .closing__body, .closing__engram', { opacity: 1 });
+    gsap.set('#eye-lid-top', { y: -110 });
+    gsap.set('#eye-lid-bot', { y: 110 });
+    gsap.set('.eye-branch-path', { opacity: 1 });
+    return;
+  }
 
-  const tl = gsap.timeline({
+  // ── Phase 1: Label fades in as section enters ──
+  gsap.fromTo('.closing__end-label',
+    { opacity: 0, y: 16 },
+    {
+      opacity: 1,
+      y: 0,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.section--closing',
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: 1,
+      }
+    }
+  );
+
+  // ── Phase 2: Eye fades in, then lids slide open ──
+  const eyeTl = gsap.timeline({
     scrollTrigger: {
       trigger: '.section--closing',
-      start: 'top 70%',
-      toggleActions: 'play none none none',
+      start: 'top 60%',
+      end: 'top -10%',
+      scrub: 1.2,
     }
   });
-  tl
-    .fromTo('.closing__end-label', { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' })
-    .fromTo('.eye-branches-svg', { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, ease: 'power3.out', duration: 1.2, transformOrigin: 'center center' }, '-=0.2')
-    .fromTo('.eye-main-svg', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, ease: 'power2.out', duration: 0.8 }, '-=0.6')
-    .fromTo('.closing__headline', { y: 30, opacity: 0 }, { y: 0, opacity: 1, ease: 'power3.out', duration: 1 }, '-=0.3')
-    .fromTo('.closing__body', { y: 20, opacity: 0 }, { y: 0, opacity: 1, ease: 'power2.out', duration: 0.8 }, '-=0.5')
-    .fromTo('.closing__engram', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.3');
+
+  eyeTl
+    // Eye container fades in
+    .fromTo('.closing__eye',
+      { opacity: 0 },
+      { opacity: 1, duration: 0.15, ease: 'none' }
+    )
+    // Top lid slides up
+    .fromTo('#eye-lid-top',
+      { y: 0 },
+      { y: -110, ease: 'power2.inOut', duration: 0.5 },
+      0.15
+    )
+    // Bottom lid slides down (simultaneously)
+    .fromTo('#eye-lid-bot',
+      { y: 0 },
+      { y: 110, ease: 'power2.inOut', duration: 0.5 },
+      0.15
+    );
+
+  // ── Phase 3: Branch paths draw out via DrawSVG ──
+  gsap.set('.eye-branches-svg', { opacity: 1 });
+  gsap.set('.eye-branch-path', { drawSVG: '0%' });
+
+  gsap.to('.eye-branch-path', {
+    drawSVG: '100%',
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.section--closing',
+      start: 'top 30%',
+      end: 'top -30%',
+      scrub: 1.5,
+    }
+  });
+
+  // ── Phase 4: Text glitch-in — repeats on every scroll pass ──
+  const closingText = document.querySelector('.closing__text-group');
+  let closingGlitchTimeout = null;
+
+  function triggerClosingGlitch() {
+    if (!closingText) return;
+    if (closingGlitchTimeout) clearTimeout(closingGlitchTimeout);
+    closingText.classList.remove('is-glitching');
+    void closingText.offsetWidth; // force reflow to restart animation
+    closingText.classList.add('is-glitching');
+    closingGlitchTimeout = setTimeout(() => closingText.classList.remove('is-glitching'), 460);
+  }
+
+  // Reveal text on first entry (fade up, once)
+  gsap.fromTo('.closing__headline, .closing__body, .closing__engram',
+    { opacity: 0, y: 20 },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: 0.12,
+      ease: 'power2.out',
+      duration: 0.6,
+      scrollTrigger: {
+        trigger: '.closing__headline',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse',
+        onEnter: triggerClosingGlitch,
+        onEnterBack: triggerClosingGlitch,
+      }
+    }
+  );
 }
 
 /* =====================================================
@@ -604,7 +757,7 @@ function initTransition0102() {
 
   let chipGroup = null;
   const CHIP_START_Y = 6;
-  const CHIP_END_Y = 0;
+  const CHIP_END_Y = -0.25;
 
   const loader = new THREE.GLTFLoader();
   loader.load(
@@ -791,6 +944,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initSection2();
   initSection3();
   initSection4();
+  initTransition0405();
   initSection5();
   initSection6();
   initTransition0102();

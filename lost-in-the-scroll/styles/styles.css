@@ -490,7 +490,7 @@ body::after {
   font-size: var(--type-body-lg-size);
   font-weight: var(--type-body-lg-weight);
   line-height: var(--type-body-lg-lh);
-  color: var(--color-black);
+  color: var(--color-text-on-light);
   max-width: 44ch;
 }
 
@@ -505,7 +505,7 @@ body::after {
   font-weight: var(--type-label-weight);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-text-on-light);
   margin-bottom: 2px;
 }
 
@@ -513,7 +513,17 @@ body::after {
   font-family: var(--font-body);
   font-size: var(--type-body-lg-size);
   line-height: var(--type-body-lg-lh);
-  color: var(--color-black);
+  color: var(--color-text-on-light);
+}
+
+[data-theme="dark"] .first-contact__copy,
+[data-theme="dark"] .first-contact__concept-label,
+[data-theme="dark"] .first-contact__concept-text {
+  color: var(--color-signal);
+}
+
+[data-theme="dark"] .first-contact__concept {
+  border-left-color: var(--color-signal);
 }
 
 .status-window {
@@ -620,16 +630,6 @@ body::after {
   height: auto;
 }
 
-.first-contact__waveform {
-  width: 100%;
-  overflow: hidden;
-}
-
-.waveform-svg {
-  width: 100%;
-  height: auto;
-  max-height: 180px;
-}
 
 /* =====================================================
    TRANSITION 02–03: Heartbeat
@@ -692,6 +692,11 @@ body::after {
   display: block;
 }
 
+/* In light mode the socket background path switches from black to yellow */
+[data-theme="light"] .socket-svg path:last-child {
+  fill: var(--color-surface-static);
+}
+
 .branches-wrap {
   position: relative;
   width: 100%;
@@ -737,6 +742,7 @@ body::after {
   font-weight: var(--type-heading-xl-weight);
   text-align: center;
   margin-bottom: var(--space-lg);
+  color: var(--color-surface-static);
 }
 
 .naming__divider {
@@ -1103,7 +1109,7 @@ body::after {
 }
 
 .switch__button--add {
-  background: var(--color-surface-alt);
+  background: var(--color-black);
   border: 3px solid var(--color-signal);
 }
 
@@ -1137,7 +1143,7 @@ body::after {
 }
 
 .switch__footer {
-  background: var(--color-surface-alt);
+  background: var(--color-black);
   padding: var(--space-sm);
   max-width: 480px;
   width: 100%;
@@ -1267,6 +1273,50 @@ body::after {
 }
 
 /* =====================================================
+   TRANSITION 04 → 05
+===================================================== */
+
+/* Spacer that gives scroll room while section 04 is pinned */
+.transition-04-05 {
+  position: relative;
+  height: 150vh;
+  pointer-events: none;
+}
+
+/* Arasaka logo overlay */
+.transition-04-05__arasaka {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(320px, 60vw);
+  height: auto;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Full-viewport white flash overlay */
+.transition-04-05__flash {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* =====================================================
+   TRANSITION 05 → 06
+===================================================== */
+
+.transition-05-06 {
+  height: 100vh;
+  background: linear-gradient(to bottom, var(--color-surface-static) 0%, var(--color-surface-static) 20%, #000 80%, #000 100%);
+  pointer-events: none;
+}
+
+/* =====================================================
    SECTION 6 — CLOSING (black)
 ===================================================== */
 
@@ -1288,6 +1338,14 @@ body::after {
   text-transform: uppercase;
   color: var(--color-signal);
   margin-bottom: var(--space-xl);
+}
+
+.closing__end-label,
+.closing__eye,
+.closing__headline,
+.closing__body,
+.closing__engram {
+  opacity: 0;
 }
 
 .closing__eye {
@@ -1313,6 +1371,17 @@ body::after {
   width: min(400px, 80vw);
   height: auto;
   position: relative;
+}
+
+.closing__text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.closing__text-group.is-glitching {
+  animation: glitch-channel-split 0.5s steps(3) forwards;
 }
 
 .closing__headline {

@@ -8,6 +8,9 @@
 ===================================================== */
 
 gsap.registerPlugin(ScrollTrigger);
+if (window.ScrollSmoother) {
+  gsap.registerPlugin(ScrollSmoother);
+}
 
 // Premium plugins — now free
 // gsap.registerPlugin(ScrollSmoother);
@@ -51,12 +54,17 @@ function initThemeToggle() {
    Uncomment once plugin is available.
 ===================================================== */
 
-// const smoother = ScrollSmoother.create({
-//   wrapper:  '#smooth-wrapper',
-//   content:  '#smooth-content',
-//   smooth:   1.5,
-//   effects:  true,
-// });
+let smoother = null;
+
+function initScrollSmoother() {
+  if (reducedMotion || !window.ScrollSmoother) return;
+  smoother = ScrollSmoother.create({
+    wrapper: '#smooth-wrapper',
+    content: '#smooth-content',
+    smooth: 1.15,
+    effects: true,
+  });
+}
 
 /* =====================================================
    REDUCED MOTION CHECK
@@ -337,6 +345,14 @@ function initSection4() {
     gsap.set('#condition-label', { opacity: 0 });
   }
 
+  function showSwitchStaticState() {
+    gsap.set(scanEls, { opacity: 0 });
+    gsap.set('#arasaka-wrap, #switch-flash, #glitch-red, #glitch-cyan', { opacity: 0 });
+    gsap.set('.switch__col--v, .switch__col--johnny', { x: 0 });
+    gsap.set('.switch__bg--dark, .switch__bg--light, .switch__header, .switch__footer', { opacity: 1 });
+    gsap.set('#condition-label', { opacity: 1 });
+  }
+
   function runSwitchTimeline() {
     const half = Math.ceil(scanEls.length / 2);
     const topHalf = scanEls.slice(0, half);
@@ -428,7 +444,10 @@ function initSection4() {
 
   resetSwitchState();
 
-  if (reducedMotion) return;
+  if (reducedMotion) {
+    showSwitchStaticState();
+    return;
+  }
 
   ScrollTrigger.create({
     trigger: '#the-switch',
@@ -765,6 +784,7 @@ function initTransition0203() {
 window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initThemeToggle();
+  initScrollSmoother();
   initKeyboardNav();
 
   initSection1();

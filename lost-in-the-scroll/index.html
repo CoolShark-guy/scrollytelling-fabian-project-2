@@ -30,6 +30,8 @@
 
         <section class="section section--red section--opening" id="opening" aria-label="Opening">
 
+          <div class="opening__center-line" aria-hidden="true"></div>
+
           <div class="section__content">
 
             <div class="opening__text">
@@ -56,6 +58,9 @@
             </div>
 
             <div class="opening__svg" aria-hidden="true">
+              <div class="chip-pulse-ring"></div>
+              <div class="chip-pulse-ring"></div>
+              <div class="chip-pulse-ring"></div>
               <svg class="chip-svg" width="157" height="157" viewBox="0 0 157 157" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#chip-clip)">
                   <path d="M139.081 16.8098H17.9191C17.3064 16.8098 16.8098 17.3064 16.8098 17.9191V139.081C16.8098 139.694 17.3064 140.19 17.9191 140.19H139.081C139.694 140.19 140.19 139.694 140.19 139.081V17.9191C140.19 17.3064 139.694 16.8098 139.081 16.8098Z" fill="#FFF600" stroke="black" stroke-width="5" stroke-miterlimit="10"/>
@@ -115,40 +120,71 @@
 
             <header class="first-contact__header">
               <p class="section__label">Section 02 // First Contact</p>
-              <h2>CONSOLE.LOG(“HELLO”)</h2>
-              <p>
-                Before this, I thought Javascript just ran on it's own, I had no way to check what it was doing or talk back to it. console.log was the first time the browser responded to something I wrote.
-              </p>
+              <h2 class="first-contact__heading">CONSOLE.LOG("HELLO")</h2>
             </header>
 
-            <div class="first-contact__waveform" aria-hidden="true">
-              <svg class="waveform-svg" viewBox="0 0 755.11 263.74" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polyline
-                  points="0 132.3 62.82 132.3 104.69 29.93 151.23 237.77 205.51 133.85 281.51 133.85 311.76 102.06 344.33 133.85 386.21 118.34 420.33 133.85 452.32 133.85 504.67 29.93 580.28 237.77 665.2 133.85 737.32 133.85 755.11 133.85"
-                  fill="none"
-                  stroke="#000000"
-                  stroke-width="18"
-                  stroke-miterlimit="10"
-                />
-              </svg>
+            <div class="first-contact__rule" aria-hidden="true"></div>
+
+            <div class="first-contact__left">
+              <p class="first-contact__copy">
+                Before this, I thought Javascript just ran on its own. I had no way to check what it was doing or talk back to it. console.log was the first time the browser responded to something I wrote.
+              </p>
+              <div class="first-contact__concept">
+                <p class="first-contact__concept-label">JS CONCEPT</p>
+                <p class="first-contact__concept-text">
+                  console.log / DevTools — first time communicating with the browser. The system responds.
+                </p>
+              </div>
+              <div class="first-contact__waveform" aria-hidden="true">
+                <svg class="waveform-svg" viewBox="0 0 755.11 263.74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polyline
+                    points="0 132.3 62.82 132.3 104.69 29.93 151.23 237.77 205.51 133.85 281.51 133.85 311.76 102.06 344.33 133.85 386.21 118.34 420.33 133.85 452.32 133.85 504.67 29.93 580.28 237.77 665.2 133.85 737.32 133.85 755.11 133.85"
+                    fill="none"
+                    stroke="#000000"
+                    stroke-width="18"
+                    stroke-miterlimit="10"
+                  />
+                </svg>
+              </div>
             </div>
 
-            <div class="status-window-svg-wrap" aria-label="DevTools diagnostic output" role="region">
+            <div class="first-contact__window-col">
+              <div class="first-contact__window-stack">
+                <div class="ghost-window ghost-window--1" aria-hidden="true"></div>
+                <div class="ghost-window ghost-window--2" aria-hidden="true"></div>
+                <div class="ghost-window ghost-window--3" aria-hidden="true"></div>
+                <div class="status-window-svg-wrap" aria-label="DevTools diagnostic output" role="region">
               <svg width="560" height="270" viewBox="0 0 560 270" fill="none" xmlns="http://www.w3.org/2000/svg" class="status-window-svg">
                 <path d="M512.56 269H1L1.00171 1H226.482L261.152 30.33H558.332L558.33 232L512.56 269Z" fill="black"/>
                 <path d="M261.152 30.33L226.482 1H1.00171L1 269H512.56L558.33 232L558.332 30.33H261.152ZM261.152 30.33H1.00171" stroke="#FFF600" stroke-width="2" stroke-miterlimit="10"/>
+                <text x="21" y="92" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">NEURAL LINK</text>
+                <text x="185" y="92" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">ESTABLISHED</text>
+                <text x="21" y="111" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">HEART RATE</text>
+                <text x="185" y="111" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">72 BPM</text>
+                <text x="21" y="130" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">CORE TEMP</text>
+                <text x="185" y="130" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">36.6°C</text>
+                <text x="21" y="149" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">ENGRAM STATUS</text>
+                <text x="185" y="149" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">READING...</text>
+                <text x="21" y="168" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">SIGNAL STRENGTH</text>
+                <text x="185" y="168" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">████░░░░  62%</text>
+                <text x="21" y="187" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">MEMORY LOAD</text>
+                <text x="185" y="187" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">▓▓▓▓▓░░░  71%</text>
+                <text x="21" y="206" font-family="Share Tech Mono, monospace" font-size="12" fill="#00F0FF">THREAT LEVEL</text>
+                <text x="185" y="206" font-family="Share Tech Mono, monospace" font-size="12" fill="#FFF600">LOW</text>
                 <path d="M21.008 65V52.04H23.006L32.51 63.344V52.04H33.968V65H31.97L22.466 53.696V65H21.008ZM36.0206 65V52.04H47.8466V53.498H37.4786V57.782H45.8126V59.258H37.4786V63.542H47.8466V65H36.0206ZM51.8898 65C51.4938 65 51.1278 64.904 50.7918 64.712C50.4678 64.52 50.2098 64.262 50.0178 63.938C49.8258 63.602 49.7298 63.236 49.7298 62.84V52.04H51.1878V62.84C51.1878 63.032 51.2538 63.2 51.3858 63.344C51.5298 63.476 51.6978 63.542 51.8898 63.542H60.5298C60.7218 63.542 60.8838 63.476 61.0158 63.344C61.1598 63.2 61.2318 63.032 61.2318 62.84V52.04H62.6898V62.84C62.6898 63.236 62.5938 63.602 62.4018 63.938C62.2098 64.262 61.9458 64.52 61.6098 64.712C61.2858 64.904 60.9258 65 60.5298 65H51.8898ZM75.6161 65L71.3861 59.96H73.2941L77.5421 64.982V65H75.6161ZM64.6721 65V52.058H75.4721C75.8681 52.058 76.2281 52.16 76.5521 52.364C76.8881 52.556 77.1521 52.814 77.3441 53.138C77.5361 53.462 77.6321 53.822 77.6321 54.218V58.016C77.6321 58.412 77.5361 58.772 77.3441 59.096C77.1521 59.42 76.8881 59.684 76.5521 59.888C76.2281 60.08 75.8681 60.176 75.4721 60.176H66.1301V65H64.6721ZM66.8321 58.7H75.4721C75.6641 58.7 75.8261 58.634 75.9581 58.502C76.1021 58.37 76.1741 58.208 76.1741 58.016V54.218C76.1741 54.026 76.1021 53.864 75.9581 53.732C75.8261 53.588 75.6641 53.516 75.4721 53.516H66.8321C66.6401 53.516 66.4721 53.588 66.3281 53.732C66.1961 53.864 66.1301 54.026 66.1301 54.218V58.016C66.1301 58.208 66.1961 58.37 66.3281 58.502C66.4721 58.634 66.6401 58.7 66.8321 58.7ZM79.5616 65V54.2C79.5616 53.804 79.6576 53.444 79.8496 53.12C80.0416 52.784 80.2996 52.52 80.6236 52.328C80.9596 52.136 81.3256 52.04 81.7216 52.04H90.3616C90.7576 52.04 91.1176 52.136 91.4416 52.328C91.7776 52.52 92.0416 52.784 92.2336 53.12C92.4256 53.444 92.5216 53.804 92.5216 54.2V65H91.0636V60.266H81.0196V65H79.5616ZM81.0196 58.808H91.0636V54.2C91.0636 54.008 91.0266 53.846 90.8826 53.714C90.7506 53.57 90.5886 53.498 90.3966 53.498H81.7566C81.5646 53.498 81.3966 53.57 81.2526 53.714C81.1206 53.846 81.0546 54.008 81.0546 54.2V58.808H81.0196ZM94.5905 65V52.022H96.0485V63.542H107.55V65H94.5905ZM113.522 65V52.022H114.98V63.542H126.482V65H113.522ZM127.711 65V52.04H129.187V65H127.711ZM131.381 65V52.04H133.379L142.883 63.344V52.04H144.341V65H142.343L132.839 53.696V65H131.381ZM146.376 65V52.04H147.852V57.782H152.028L156.852 52.04H158.724V52.058L153.306 58.52L158.742 64.982V65H156.852L152.028 59.258H147.852V65H146.376Z" fill="#FFF600"/>
                 <path d="M274.34 155L270.434 150.338H273.548L276.932 154.334V155H274.34ZM264.008 155V142.058H274.448C274.904 142.058 275.324 142.172 275.708 142.4C276.092 142.628 276.398 142.934 276.626 143.318C276.854 143.69 276.968 144.104 276.968 144.56V148.052C276.968 148.508 276.854 148.928 276.626 149.312C276.398 149.696 276.092 150.002 275.708 150.23C275.324 150.446 274.904 150.554 274.448 150.554L266.384 150.572V155H264.008ZM266.6 148.16H274.34C274.4 148.16 274.454 148.142 274.502 148.106C274.55 148.07 274.574 148.022 274.574 147.962V144.65C274.574 144.59 274.55 144.542 274.502 144.506C274.454 144.458 274.4 144.434 274.34 144.434H266.6C266.54 144.434 266.486 144.458 266.438 144.506C266.402 144.542 266.384 144.59 266.384 144.65V147.962C266.384 148.022 266.402 148.07 266.438 148.106C266.486 148.142 266.54 148.16 266.6 148.16ZM278.897 155V142.04H290.831V144.434H281.291V147.314H288.959V149.726H281.291V152.606H290.831V155H278.897ZM292.679 155V144.542C292.679 144.086 292.793 143.672 293.021 143.3C293.249 142.916 293.549 142.61 293.921 142.382C294.305 142.154 294.725 142.04 295.181 142.04H303.119C303.575 142.04 303.995 142.154 304.379 142.382C304.763 142.61 305.069 142.916 305.297 143.3C305.525 143.672 305.639 144.086 305.639 144.542V155H303.245V150.644H295.055V155H292.679ZM295.055 148.268H303.245V144.65C303.245 144.59 303.221 144.542 303.173 144.506C303.125 144.458 303.071 144.434 303.011 144.434H295.271C295.211 144.434 295.157 144.458 295.109 144.506C295.073 144.542 295.055 144.59 295.055 144.65V148.268ZM307.726 155V142.04H318.166C318.622 142.04 319.042 142.154 319.426 142.382C319.81 142.61 320.116 142.916 320.344 143.3C320.572 143.672 320.686 144.086 320.686 144.542V152.498C320.686 152.954 320.572 153.374 320.344 153.758C320.116 154.13 319.81 154.43 319.426 154.658C319.042 154.886 318.622 155 318.166 155H307.726ZM310.3 152.606H318.058C318.118 152.606 318.172 152.588 318.22 152.552C318.268 152.504 318.292 152.45 318.292 152.39V144.65C318.292 144.59 318.268 144.542 318.22 144.506C318.172 144.458 318.118 144.434 318.058 144.434H310.3C310.24 144.434 310.186 144.458 310.138 144.506C310.102 144.542 310.084 144.59 310.084 144.65V152.39C310.084 152.45 310.102 152.504 310.138 152.552C310.186 152.588 310.24 152.606 310.3 152.606ZM322.449 155V142.04H324.807V155H322.449ZM326.551 155V142.04H329.161L337.117 151.508V142.04H339.511V155H336.901L328.927 145.514V155H326.551ZM344.029 155C343.573 155 343.153 154.886 342.769 154.658C342.397 154.43 342.097 154.13 341.869 153.758C341.641 153.374 341.527 152.954 341.527 152.498V144.542C341.527 144.086 341.641 143.672 341.869 143.3C342.097 142.916 342.397 142.61 342.769 142.382C343.153 142.154 343.573 142.04 344.029 142.04H351.967C352.423 142.04 352.843 142.154 353.227 142.382C353.611 142.61 353.917 142.916 354.145 143.3C354.373 143.672 354.487 144.086 354.487 144.542V145.55H352.093V144.65C352.093 144.59 352.069 144.542 352.021 144.506C351.973 144.458 351.919 144.434 351.859 144.434H344.119C344.059 144.434 344.005 144.458 343.957 144.506C343.921 144.542 343.903 144.59 343.903 144.65V152.39C343.903 152.45 343.921 152.504 343.957 152.552C344.005 152.588 344.059 152.606 344.119 152.606H351.859C351.919 152.606 351.973 152.588 352.021 152.552C352.069 152.504 352.093 152.45 352.093 152.39V150.05H349.159V147.656H354.487V152.498C354.487 152.954 354.373 153.374 354.145 153.758C353.917 154.13 353.611 154.43 353.227 154.658C352.843 154.886 352.423 155 351.967 155H344.029ZM356.433 155V152.642H358.791V155H356.433ZM360.511 155V152.642H362.869V155H360.511ZM364.589 155V152.642H366.947V155H364.589Z" fill="#ED0048"/>
                 <circle cx="36" cy="16" r="8" fill="#ED0048"/>
                 <circle cx="62" cy="16" r="8" fill="#00F0FF"/>
                 <circle cx="88" cy="16" r="8" fill="#00F0FF"/>
               </svg>
+                </div>
+              </div>
             </div>
 
           </div>
         </section>
 
-        <section class="section section--black section--naming" id="naming-things" aria-label="Naming Things">
+        <section class="section section--black section--naming" id="naming-things" aria-label="">
 
           <div class="section__content">
 
@@ -156,6 +192,14 @@
             <h2 class="text-heading-lg naming__heading">Naming Things</h2>
 
             <div class="naming__divider"></div>
+
+            <p class="naming__body">
+                What made naming feel important wasn't the concept itself.
+                It was the tip calculator. Every calculation depended on the
+                variable names being <strong>exactly right</strong>.
+                Naming isn't just organization.
+                It's how anything gets found again.
+              </p>
 
             <div class="naming__panels" aria-label="Unindexed vs Indexed engram comparison">
 
@@ -225,13 +269,6 @@
             <p class="naming__caption">same data — <span>different address</span></p>
 
             <div class="naming__bottom">
-              <p class="naming__body">
-                What made naming feel important wasn't the concept itself.
-                It was the tip calculator. Every calculation depended on the
-                variable names being <strong>exactly right</strong>.
-                Naming isn't just organization.
-                It's how anything gets found again.
-              </p>
               <div class="naming__concept">
                 <span class="naming__concept-label">JS Concept</span>
                 <span class="naming__concept-value">Variables</span>
@@ -242,40 +279,59 @@
           </div>
         </section>
 
-        <section class="section section--black section--switch" id="the-switch" aria-label="The Switch">
+        <section class="section section--switch" id="the-switch" aria-label="The Switch">
 
-          <header class="switch__header">
-            <p class="section__label">Section 04 // The Switch</p>
-          </header>
+          <!-- Background Split -->
+          <div class="switch__bg switch__bg--dark" aria-hidden="true"></div>
+          <div class="switch__bg switch__bg--light" aria-hidden="true"></div>
 
-          <svg class="switch__arasaka" viewBox="0 0 350.36 350.36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path fill="#ed0048" d="M269.18,114.42c-27.74,0-50.22,22.49-50.22,50.22,0,9.79,2.81,18.92,7.66,26.65l-41.65,41.65v-83.52c22.95-4.64,40.22-24.91,40.22-49.22,0-27.74-22.49-50.22-50.22-50.22s-50.22,22.49-50.22,50.22c0,24.31,17.28,44.59,40.22,49.22v83.52l-41.39-41.39c4.95-7.78,7.83-17.01,7.83-26.91,0-27.74-22.49-50.22-50.22-50.22s-50.22,22.49-50.22,50.22,22.49,50.22,50.22,50.22c10.6,0,20.42-3.29,28.52-8.89l55.26,55.26v56.78h20v-56.78l55.44-55.44c8.15,5.71,18.07,9.07,28.78,9.07,27.74,0,50.22-22.49,50.22-50.22s-22.49-50.22-50.22-50.22Z"/>
-            <circle fill="none" stroke="#ed0048" stroke-miterlimit="10" stroke-width="18" cx="175.18" cy="175.18" r="166.18"/>
-          </svg>
+          <!-- Main Content -->
+          <div class="switch__container">
 
+            <header class="switch__header">
+              <p class="section__label">Section 04 // The Switch</p>
+              <h2 class="switch__title">
+                <span class="heading__line--yellow">The</span>
+                <span class="heading__line--black">Switch</span>
+              </h2>
+            </header>
 
+            <div class="switch__columns">
 
-          <p class="switch__condition" aria-label="JavaScript conditional: if identity equals V">
-            if ( identity === 'V' )
-          </p>
+              <div class="switch__col switch__col--v">
+                <div class="switch__col-header">
+                  <span class="switch__condition-label">Condition True</span>
+                  <h3 class="switch__col-title">V<br/>Renders</h3>
+                  <span class="switch__col-line" aria-hidden="true"></span>
+                </div>
+                <p class="switch__body-text">The chip holds two identities. When the condition is true, one surfaces. The class is on the element and the page knows what it is.</p>
+                <div class="switch__button switch__button--add">
+                  <span class="switch__button-text">.add( 'dark' )</span>
+                </div>
+              </div>
 
-          <div class="switch__side switch__side--v">
-            <p class="switch__result-label">Condition True</p>
-            <h2 class="switch__identity">V<br/>Renders</h2>
-            <p class="switch__desc">
-              The condition evaluates. Identity matches.
-              V's data loads. The page responds to who you are.
-            </p>
-          </div>
+              <div class="switch__divider" aria-hidden="true">
+                <span class="switch__divider-text">if ( identity === 'V' )</span>
+              </div>
 
-          <div class="switch__side switch__side--johnny">
-            <p class="switch__result-label">Condition False</p>
-            <h2 class="switch__identity">Johnny<br/>Bleeds In</h2>
-            <p class="switch__desc">
-              No match. The else block runs.
-              A different identity surfaces.
-              Same chip. One condition. Different render.
-            </p>
+              <div class="switch__col switch__col--johnny">
+                <div class="switch__col-header">
+                  <span class="switch__condition-label">Condition False</span>
+                  <h3 class="switch__col-title">Johnny<br/>Bleeds In</h3>
+                  <span class="switch__col-line" aria-hidden="true"></span>
+                </div>
+                <p class="switch__body-text">The chip holds two identities. When the condition is false, the other surfaces. Same chip. One condition. Different render.</p>
+                <div class="switch__button switch__button--remove">
+                  <span class="switch__button-text">.remove( 'dark' )</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="switch__footer">
+              <p class="switch__footer-text">The chip wasn't built for two. But it had to choose which one rendered. The page works the same way. One class, one element, one condition. You can't be both at once.</p>
+            </div>
+
           </div>
 
         </section>

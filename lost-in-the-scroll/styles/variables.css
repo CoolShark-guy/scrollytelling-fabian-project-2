@@ -83,6 +83,15 @@
   --type-label-size:   11px;
   --type-label-weight: 600;
   --type-label-lh:     1;
+   --type-label-tracking: 0.18em;
+
+   /* Section label mapping */
+   --color-section-label-default: var(--color-cyan-500);
+   --color-section01-label: var(--color-yellow-500);
+   --color-section02-label: var(--color-black);
+   --color-section03-label: var(--color-yellow-500);
+   --color-section04-label: var(--color-yellow-500);
+   --color-section05-label: var(--color-red-500);
 
   /* =====================================================
      SPACING TOKENS
